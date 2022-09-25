@@ -192,10 +192,19 @@ M.tablist = function()
   local result, number_of_tabs = "", fn.tabpagenr "$"
 
   if number_of_tabs > 1 then
+    local tabpages = vim.api.nvim_list_tabpages()
     for i = 1, number_of_tabs, 1 do
+      local tabname = ''
+      if (vim.t[tabpages[i]].CtrlSpaceLabel ~= nil and vim.t[tabpages[i]].CtrlSpaceLabel ~= '') then
+        tabname = '(' .. vim.t[tabpages[i]].CtrlSpaceLabel .. ')'
+        -- print("hihi")
+      end
       local tab_hl = ((i == fn.tabpagenr()) and "%#TbLineTabOn# ") or "%#TbLineTabOff# "
-      result = result .. ("%" .. i .. "@TbGotoTab@" .. tab_hl .. i .. " ")
+      result = result .. ("%" .. i .. "@TbGotoTab@" .. tab_hl .. i .. tabname .. " ")
       result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
+      -- vim.pretty_print(fn.tabpagenr())
+      -- vim.pretty_print(i)
+      -- vim.pretty_print(vim.t[i].CtrlSpaceLabel)
     end
 
     local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
