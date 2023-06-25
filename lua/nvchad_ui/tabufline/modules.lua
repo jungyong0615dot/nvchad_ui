@@ -200,7 +200,7 @@ M.tablist = function()
         -- print("hihi")
       end
       local tab_hl = ((i == fn.tabpagenr()) and "%#TbLineTabOn# ") or "%#TbLineTabOff# "
-      result = result .. ("%" .. i .. "@TbGotoTab@" .. tab_hl .. i .. tabname .. " ")
+      result = result .. ("%" .. i .. "@TbGotoTab@" .. tab_hl .. i  .. " ")
       result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
       -- vim.pretty_print(fn.tabpagenr())
       -- vim.pretty_print(i)
