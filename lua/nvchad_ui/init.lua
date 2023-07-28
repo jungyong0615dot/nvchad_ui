@@ -10,7 +10,7 @@ M.tabufline = function()
 end
 
 M.setup = function()
-  vim.opt.statusline = "%!v:lua.require('nvchad_ui').statusline()"
+  -- vim.opt.statusline = "%!v:lua.require('nvchad_ui').statusline()"
 
   -- lazyload tabufline
   require "nvchad_ui.tabufline.lazyload"(config.tabufline)
